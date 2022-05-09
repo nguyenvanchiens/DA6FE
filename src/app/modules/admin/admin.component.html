@@ -1,0 +1,92 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="" target="_blank">
+        <img src="../../../assets/images/favicon.png" alt="logo">
+        <h1>FACTORY's™ VN</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzOpen nzTitle="Giới thiệu chung" nzIcon="home">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin/gioi-thieu">Hướng dẫn sử dụng</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Tài liệu nhà máy" nzIcon="dropbox">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin/tai-lieu">Danh sách tài liệu</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Danh mục sản phẩm" nzIcon="dropbox">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin/so-mi-out">Sản phẩm áo sơ mi</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Sản phẩm áo T-Shirt</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Sản phẩm áo Polo-Shirt</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Sản phẩm quần</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Sản phẩm jacket</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Sản phẩm vest</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Quản lý đầu vào" nzIcon="dropbox">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin/so-mi-in">Sản phẩm áo sơ mi</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Sản phẩm áo T-Shirt</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Sản phẩm áo Polo-Shirt</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Sản phẩm quần</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Sản phẩm jacket</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>Sản phẩm vest</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i class="trigger"
+               nz-icon
+               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></i>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

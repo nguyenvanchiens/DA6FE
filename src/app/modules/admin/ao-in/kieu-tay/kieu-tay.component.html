@@ -1,7 +1,7 @@
 <div class="send-request">
-    <button nz-button nzType="primary" [disabled]="setOfCheckedId.size === 0" [nzLoading]="loading"
+    <button nz-button nzType="danger" [disabled]="setOfCheckedId.size === 0" [nzLoading]="loading"
         (click)="sendRequest()">
-        Send Request
+        Xóa !
     </button>
     <span>Selected {{ setOfCheckedId.size }} items</span>
 </div>
@@ -13,7 +13,7 @@
             <th>Số thứ tự</th>
             <th>Tên kiểu tay</th>
             <th>Ngày tạo</th>
-            <th>Ngày sửa</th>
+            <th>Ngày cập nhật</th>
             <th>Thao tác</th>
         </tr>
     </thead>
@@ -25,6 +25,7 @@
             <td>{{ data.tenKieu }}</td>
             <td>{{ data.createdDate }}</td>
             <td>{{ data.modifiedDate }}</td>
+            <td><button><i nz-icon nzType="edit" nzTheme="outline"></i></button> | <button><i nz-icon nzType="delete" nzTheme="outline"></i></button></td>
         </tr>
     </tbody>
 </nz-table>

@@ -34,7 +34,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     NzGridModule,
     NzSelectModule,
     NzTabsModule,
-    NzTableModule,
+    NzTableModule
   ]
 })
 export class SharedModule { }

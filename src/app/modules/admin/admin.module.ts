@@ -43,7 +43,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     RouterModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers:[]
 })

@@ -1,0 +1,30 @@
+<div class="send-request">
+    <button nz-button nzType="primary" [disabled]="setOfCheckedId.size === 0" [nzLoading]="loading"
+        (click)="sendRequest()">
+        Send Request
+    </button>
+    <span>Selected {{ setOfCheckedId.size }} items</span>
+</div>
+<nz-table #rowSelectionTable nzShowPagination nzShowSizeChanger [nzData]="listOfData"
+    (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
+    <thead>
+        <tr>
+            <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
+            <th>Số thứ tự</th>
+            <th>Tên kiểu tay</th>
+            <th>Ngày tạo</th>
+            <th>Ngày sửa</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+            <td [nzChecked]="setOfCheckedId.has(data.maKieuTay)"
+                (nzCheckedChange)="onItemChecked(data.maKieuTay, $event)"></td>
+            <td>{{ data.maKieuTay }}</td>
+            <td>{{ data.tenKieu }}</td>
+            <td>{{ data.createdDate }}</td>
+            <td>{{ data.modifiedDate }}</td>
+        </tr>
+    </tbody>
+</nz-table>

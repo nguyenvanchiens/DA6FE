@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SoMiInComponent } from './so-mi-in.component';
+import { KieuAoComponent } from './kieu-ao.component';
 
-describe('SoMiInComponent', () => {
-  let component: SoMiInComponent;
-  let fixture: ComponentFixture<SoMiInComponent>;
+describe('KieuAoComponent', () => {
+  let component: KieuAoComponent;
+  let fixture: ComponentFixture<KieuAoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SoMiInComponent ]
+      declarations: [ KieuAoComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SoMiInComponent);
+    fixture = TestBed.createComponent(KieuAoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

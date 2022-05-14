@@ -19,12 +19,12 @@ const routes: Routes = [
         loadChildren: () => import('./gioi-thieu/gioi-thieu.module').then(m=>m.GioiThieuModule)
       },
       {
-        path:'so-mi-in',
-        loadChildren: () => import('./so-mi-in/so-mi-in.module').then(m=>m.SoMiInModule)
+        path:'ao-in',
+        loadChildren: () => import('./ao-in/ao-in.module').then(m=>m.AoInModule)
       },
       {
-        path:'so-mi-out',
-        loadChildren: ()=> import('./so-mi-out/so-mi-out.module').then(m=>m.SoMiOutModule)
+        path:'ao-out',
+        loadChildren: ()=> import('./ao-out/ao-out.module').then(m=>m.AoOutModule)
       },
       {
         path:'tai-lieu',

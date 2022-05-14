@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SoMiOutComponent } from './so-mi-out.component';
+import { KieuCoComponent } from './kieu-co.component';
 
-describe('SoMiOutComponent', () => {
-  let component: SoMiOutComponent;
-  let fixture: ComponentFixture<SoMiOutComponent>;
+describe('KieuCoComponent', () => {
+  let component: KieuCoComponent;
+  let fixture: ComponentFixture<KieuCoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SoMiOutComponent ]
+      declarations: [ KieuCoComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SoMiOutComponent);
+    fixture = TestBed.createComponent(KieuCoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

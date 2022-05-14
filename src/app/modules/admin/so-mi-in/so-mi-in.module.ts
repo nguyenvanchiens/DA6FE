@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SoMiInComponent } from './so-mi-in.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { KieuTayComponent } from './kieu-tay/kieu-tay.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    SoMiInComponent
+    SoMiInComponent,
+    KieuTayComponent
   ],
   imports: [
     CommonModule,

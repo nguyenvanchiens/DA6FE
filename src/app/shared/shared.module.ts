@@ -10,6 +10,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     NzInputModule,
     NzUploadModule,
     NzGridModule,
-    NzSelectModule
+    NzSelectModule,
+    NzTabsModule
   ]
 })
 export class SharedModule { }

@@ -1,1 +1,36 @@
-<p>login works!</p>
+<div class="box">
+    <div>
+        <h1 style="text-align: center; margin-bottom: 30px; font-size: 22px; font-weight: 600; color: blue;">QUẢN LÝ CÔNG TY MAY MẶC</h1>
+        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Vui lòng nhập tài khoản">
+                    <nz-input-group nzPrefixIcon="user">
+                        <input type="text" nz-input class="input-form" formControlName="userName"
+                            placeholder="Tài khoản" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Vui lòng nhập mật khẩu!">
+                    <nz-input-group nzPrefixIcon="lock">
+                        <input type="password" nz-input class="input-form" formControlName="password"
+                            placeholder="Mật khẩu" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <div nz-row class="login-form-margin">
+                <div nz-col [nzSpan]="12">
+                    <label nz-checkbox formControlName="remember">
+                        <span>Nhớ mật khẩu</span>
+                    </label>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <a class="login-form-forgot" style="color: blue;">Quên mật khẩu</a>
+                </div>
+            </div>
+            <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">ĐĂNG NHẬP</button>
+            hoặc
+            <a style="color: red;">Đăng ký!</a>
+        </form>
+    </div>
+</div>

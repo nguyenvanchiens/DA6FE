@@ -15,6 +15,7 @@ import { KieuThanSauComponent } from './kieu-than-sau/kieu-than-sau.component';
 import { ThanhPhanVaiMotComponent } from './thanh-phan-vai-mot/thanh-phan-vai-mot.component';
 import { ThanhPhanVaiHaiComponent } from './thanh-phan-vai-hai/thanh-phan-vai-hai.component';
 import { ThanhPhanVaiBaComponent } from './thanh-phan-vai-ba/thanh-phan-vai-ba.component';
+import { KieuAoService } from './kieu-ao/kieu-ao.service';
 
 const routes: Routes = [
   {
@@ -45,6 +46,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     RouterModule,
     SharedModule
+  ],
+  providers: [
+    KieuAoService
   ]
 })
 export class AoInModule { }

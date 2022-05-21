@@ -1,1 +1,22 @@
-<p>ao-out works!</p>
+<nz-steps [nzCurrent]="current">
+    <nz-step nzTitle="Chọn loại áo"></nz-step>
+    <nz-step nzTitle="Chọn đầu vào"></nz-step>
+    <nz-step nzTitle="Kết quả tìm thấy"></nz-step>
+</nz-steps>
+
+<div class="steps-content">
+    <app-loai-ao *ngIf="index == 1"></app-loai-ao>
+    <app-dau-vao *ngIf="index == 2"></app-dau-vao>
+    <app-ket-qua *ngIf="index == 3"></app-ket-qua>
+</div>
+<div class="steps-action">
+    <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+        <span>Quay lại</span>
+    </button>
+    <button nz-button nzType="default" (click)="next()" *ngIf="current < 2">
+        <span>Tiếp tục</span>
+    </button>
+    <button nz-button nzType="primary" (click)="done()" *ngIf="current === 2">
+        <span>Hoàn thành</span>
+    </button>
+</div>

@@ -4,6 +4,7 @@ import { AdminComponent } from './admin.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from 'src/app/core/services/api.service';
 
 const routes: Routes = [
   {
@@ -45,6 +46,8 @@ const routes: Routes = [
     SharedModule,
     HttpClientModule,
   ],
-  providers:[]
+  providers:[
+    ApiService,
+  ]
 })
 export class AdminModule { }

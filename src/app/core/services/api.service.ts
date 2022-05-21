@@ -3,7 +3,6 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { FilterModel } from "../models/filter.model";
 import { map } from 'rxjs/operators';
-import { ResponseStatus } from "../enums/response-status.enum";
 
 @Injectable({
     providedIn: 'root'
@@ -11,10 +10,10 @@ import { ResponseStatus } from "../enums/response-status.enum";
 export class ApiService {
     constructor(private http: HttpClient) { }
 
-    getList(url:string,filter: FilterModel):Observable<any>{
-        return this.http.post<any>(url,filter).pipe(
-            map((data:any)=>{
-                if(data != null){
+    getList(url: string, filter: FilterModel): Observable<any> {
+        return this.http.post<any>(url, filter).pipe(
+            map((data: any) => {
+                if (data != null) {
                     return data;
                 }
                 return null;
@@ -22,10 +21,10 @@ export class ApiService {
         );
     }
 
-    insert(url:string, model:any):Observable<any>{
-        return this.http.post<any>(url,model).pipe(
-            map((data:any)=>{
-                if(data != null){
+    insert(url: string, model: any): Observable<any> {
+        return this.http.post<any>(url, model).pipe(
+            map((data: any) => {
+                if (data != null) {
                     return data;
                 }
                 return null;
@@ -33,10 +32,10 @@ export class ApiService {
         )
     }
 
-    update(url, model:any):Observable<any>{
-        return this.http.put<any>(url,model).pipe(
-            map((data:any)=>{
-                if(data != null){
+    update(url, model: any): Observable<any> {
+        return this.http.put<any>(url, model).pipe(
+            map((data: any) => {
+                if (data != null) {
                     return data;
                 }
                 return null;
@@ -44,10 +43,10 @@ export class ApiService {
         )
     }
 
-    delete(url:string, id:number):Observable<any>{
-        return this.http.get<any>(url+"/"+id).pipe(
-            map((data:any)=>{
-                if(data != null){
+    delete(url: string, id: number): Observable<any> {
+        return this.http.get<any>(url + "/" + id).pipe(
+            map((data: any) => {
+                if (data != null) {
                     return data;
                 }
                 return null;
@@ -55,14 +54,25 @@ export class ApiService {
         )
     }
 
-    item(url:string, id:number):Observable<any>{
-        return this.http.get<any>(url+"/"+id).pipe(
-            map((data:any)=>{
-                if(data != null){
+    item(url: string, id: number): Observable<any> {
+        return this.http.get<any>(url + "/" + id).pipe(
+            map((data: any) => {
+                if (data != null) {
                     return data;
                 }
                 return null;
             })
         )
+    }
+
+    dropDown(url: string): Observable<any> {
+        return this.http.get<any>(url).pipe(
+            map((data: any) => {
+                if (data != null) {
+                    return data;
+                }
+                return null;
+            })
+        );
     }
 }

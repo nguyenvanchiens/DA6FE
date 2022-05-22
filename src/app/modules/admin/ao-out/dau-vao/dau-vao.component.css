@@ -1,0 +1,13 @@
+nz-select {
+    width: 240px;
+}
+
+.tab-content{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+span {
+    padding-right: 16px;
+}

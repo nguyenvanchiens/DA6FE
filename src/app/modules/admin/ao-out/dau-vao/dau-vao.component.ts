@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dau-vao.component.css']
 })
 export class DauVaoComponent implements OnInit {
-
+  selectedValue = '';
   constructor() { }
 
   ngOnInit(): void {

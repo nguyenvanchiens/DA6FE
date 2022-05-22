@@ -7,6 +7,7 @@ import { LoaiAoComponent } from './loai-ao/loai-ao.component';
 import { DauVaoComponent } from './dau-vao/dau-vao.component';
 import { KetQuaComponent } from './ket-qua/ket-qua.component';
 import { FormsModule } from '@angular/forms';
+import { DauRaComponent } from './dau-ra/dau-ra.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
     AoOutComponent,
     LoaiAoComponent,
     DauVaoComponent,
-    KetQuaComponent
+    KetQuaComponent,
+    DauRaComponent
   ],
   imports: [
     CommonModule,

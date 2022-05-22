@@ -11,7 +11,7 @@ export class AoOutComponent implements OnInit {
 
   pre(): void {
     this.current -= 1;
-    if (this.index < 3) {
+    if (this.index < 4) {
       this.index += 1
     }
     this.changeContent();
@@ -41,6 +41,10 @@ export class AoOutComponent implements OnInit {
       }
       case 2: {
         this.index = 3;
+        break;
+      }
+      case 3: {
+        this.index = 4;
         break;
       }
       default: {

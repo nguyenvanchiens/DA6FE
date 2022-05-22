@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Login } from './login.model';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { LoginService } from './login.service';
 
 @Component({
@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: Router,
-    private api: LoginService) { }
+    private api: LoginService,
+    private notifi: NzNotificationService) { }
 
   validateForm!: FormGroup;
 
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     if(this.validateForm.invalid){
       console.log("Vui lòng nhập tài khoản và mật khẩu","");     
     }
+    console.log(this.validateForm.value)
     this.api.login(this.validateForm.value).subscribe(
       (response: any)=>{
         if(response){
@@ -32,7 +34,7 @@ export class LoginComponent implements OnInit {
         }
       },
       (err)=>{
-        console.log("Không có kết nối Server","")
+        this.notifi.error("LỖI","Không thể kết nối đến Server!")
       }
     )
   }

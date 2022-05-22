@@ -16,6 +16,7 @@ import { ThanhPhanVaiMotComponent } from './thanh-phan-vai-mot/thanh-phan-vai-mo
 import { ThanhPhanVaiHaiComponent } from './thanh-phan-vai-hai/thanh-phan-vai-hai.component';
 import { ThanhPhanVaiBaComponent } from './thanh-phan-vai-ba/thanh-phan-vai-ba.component';
 import { KieuAoService } from './kieu-ao/kieu-ao.service';
+import { ApiService } from 'src/app/core/services/api.service';
 
 const routes: Routes = [
   {
@@ -48,6 +49,7 @@ const routes: Routes = [
     SharedModule
   ],
   providers: [
+    ApiService,
     KieuAoService
   ]
 })

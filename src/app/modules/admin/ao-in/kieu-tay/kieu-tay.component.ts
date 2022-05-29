@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { KieuTay } from './kieu-tay.model';
+import { KieuTayService } from './kieu-tay.service';
 
 @Component({
   selector: 'app-kieu-tay',
@@ -16,89 +17,18 @@ export class KieuTayComponent implements OnInit {
   listOfCurrentPageData: readonly KieuTay[] = [];
   setOfCheckedId = new Set<number>();
   
-  constructor() { }
+  constructor(private kieutayApi: KieuTayService) { }
 
   ngOnInit(): void {
-    this.listOfData = [
-      {
-        maKieuTay : 1,
-        tenKieu : "Kiểu tay 1",
-        createdDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY'),
-        modifiedDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY')
-      },
-      {
-        maKieuTay : 2,
-        tenKieu : "Kiểu tay 2",
-        createdDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY'),
-        modifiedDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY')
-      },
-      {
-        maKieuTay : 3,
-        tenKieu : "Kiểu tay 3",
-        createdDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY'),
-        modifiedDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY')
-      },
-      {
-        maKieuTay : 4,
-        tenKieu : "Kiểu tay 4",
-        createdDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY'),
-        modifiedDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY')
-      },
-      {
-        maKieuTay : 5,
-        tenKieu : "Kiểu tay 3",
-        createdDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY'),
-        modifiedDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY')
-      },
-      {
-        maKieuTay : 6,
-        tenKieu : "Kiểu tay 4",
-        createdDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY'),
-        modifiedDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY')
-      },
-      {
-        maKieuTay : 7,
-        tenKieu : "Kiểu tay 3",
-        createdDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY'),
-        modifiedDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY')
-      },
-      {
-        maKieuTay : 8,
-        tenKieu : "Kiểu tay 4",
-        createdDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY'),
-        modifiedDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY')
-      },
-      {
-        maKieuTay : 9,
-        tenKieu : "Kiểu tay 3",
-        createdDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY'),
-        modifiedDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY')
-      },
-      {
-        maKieuTay : 10,
-        tenKieu : "Kiểu tay 4",
-        createdDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY'),
-        modifiedDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY')
-      },
-      {
-        maKieuTay : 11,
-        tenKieu : "Kiểu tay 3",
-        createdDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY'),
-        modifiedDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY')
-      },
-      {
-        maKieuTay : 12,
-        tenKieu : "Kiểu tay 4",
-        createdDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY'),
-        modifiedDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY')
-      },
-      {
-        maKieuTay : 13,
-        tenKieu : "Kiểu tay 3",
-        createdDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY'),
-        modifiedDate : this.datepipe.transform(new Date(), 'dd-MMM-YYYY')
-      },
-    ]
+    this.getList();
+  }
+
+  getList(){
+    this.kieutayApi.list().subscribe((res:any)=>{
+      if(res){
+        this.listOfData = res;
+      }
+    })
   }
 
   updateCheckedSet(id: number, checked: boolean): void {

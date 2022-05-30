@@ -12,9 +12,7 @@ import { KieuNepComponent } from './kieu-nep/kieu-nep.component';
 import { KieuThanTruocComponent } from './kieu-than-truoc/kieu-than-truoc.component';
 import { KieuXeComponent } from './kieu-xe/kieu-xe.component';
 import { KieuThanSauComponent } from './kieu-than-sau/kieu-than-sau.component';
-import { ThanhPhanVaiMotComponent } from './thanh-phan-vai-mot/thanh-phan-vai-mot.component';
-import { ThanhPhanVaiHaiComponent } from './thanh-phan-vai-hai/thanh-phan-vai-hai.component';
-import { ThanhPhanVaiBaComponent } from './thanh-phan-vai-ba/thanh-phan-vai-ba.component';
+import { ThanhPhanVaiComponent } from './thanh-phan-vai/thanh-phan-vai.component';
 import { KieuAoService } from './kieu-ao/kieu-ao.service';
 import { ApiService } from 'src/app/core/services/api.service';
 
@@ -38,9 +36,7 @@ const routes: Routes = [
     KieuThanTruocComponent,
     KieuXeComponent,
     KieuThanSauComponent,
-    ThanhPhanVaiMotComponent,
-    ThanhPhanVaiHaiComponent,
-    ThanhPhanVaiBaComponent
+    ThanhPhanVaiComponent,
   ],
   imports: [
     CommonModule,

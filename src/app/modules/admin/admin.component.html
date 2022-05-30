@@ -1,10 +1,6 @@
 <nz-layout class="app-layout">
-  <nz-sider class="menu-sidebar"
-            nzCollapsible
-            nzWidth="256px"
-            nzBreakpoint="md"
-            [(nzCollapsed)]="isCollapsed"
-            [nzTrigger]="null">
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
     <div class="sidebar-logo">
       <a href="" target="_blank">
         <img src="../../../assets/images/favicon.png" alt="logo">
@@ -63,12 +59,25 @@
   <nz-layout>
     <nz-header>
       <div class="app-header">
-        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <i class="trigger"
-               nz-icon
-               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-            ></i>
-        </span>
+        <div class="ant-page-header-heading">
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+          </span>
+          <nz-page-header-extra>
+            <nz-avatar style="margin-right: 0px; background-color: #04203a" nzText="CD" nz-page-header-avatar nzSize="large"></nz-avatar>
+            <nz-page-header-title style="font-size: 15px; margin-right: 0px;">Vũ Chung Dũng</nz-page-header-title>
+            <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu" style="border: none; padding: 0">
+              <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top; margin-right: 40px;"></i>
+            </button>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item>Thông tin tài khoản</li>
+                <li nz-menu-item>Đôi mật khẩu</li>
+                <li nz-menu-item>Đăng xuất</li>
+              </ul>
+            </nz-dropdown-menu>
+          </nz-page-header-extra>
+        </div>
       </div>
     </nz-header>
     <nz-content>

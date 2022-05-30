@@ -1,6 +1,6 @@
 export interface KieuTui {
     maKieuTui: number;
-    tenKieu: string;
+    tenKieuTui: string;
     createdDate: string;
     modifiedDate: string;
     disabled?: boolean;

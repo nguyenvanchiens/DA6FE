@@ -1,6 +1,6 @@
 export interface KieuThanTruoc {
     maKieuThanTruoc: number;
-    tenKieu: string;
+    tenKieuThanTruoc: string;
     createdDate: string;
     modifiedDate: string;
     disabled?: boolean;

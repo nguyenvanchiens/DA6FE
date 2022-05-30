@@ -19,10 +19,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let data of rowSelectionTable.data">
-            <td [nzChecked]="setOfCheckedId.has(data.maKieuThanSau)"
-                (nzCheckedChange)="onItemChecked(data.maKieuThanSau, $event)"></td>
-            <td>{{ data.maKieuThanSau }}</td>
-            <td>{{ data.tenKieuThanSau }}</td>
+            <td [nzChecked]="setOfCheckedId.has(data.maThanhPhanVai)"
+                (nzCheckedChange)="onItemChecked(data.maThanhPhanVai, $event)"></td>
+            <td>{{ data.maThanhPhanVai }}</td>
+            <td>{{ data.tenThanhPhanVai }}</td>
             <td>{{ data.createdDate }}</td>
             <td>{{ data.modifiedDate }}</td>
             <td><button><i nz-icon nzType="edit" nzTheme="outline"></i></button> | <button><i nz-icon nzType="delete" nzTheme="outline"></i></button></td>

@@ -3,7 +3,7 @@
         (click)="sendRequest()">
         Xóa !
     </button>
-    <span>Selected {{ setOfCheckedId.size }} items</span>
+    <span>Chọn {{ setOfCheckedId.size }} dữ liệu</span>
 </div>
 <nz-table #rowSelectionTable nzShowPagination nzShowSizeChanger [nzData]="listOfData"
     (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">

@@ -12,7 +12,7 @@ export class KieuThanTruocService {
     constructor(private api: ApiService){}
 
     url = {
-        list: "Type/GetAllKieuThanTruoc",
+        list: "Type",
     }
 
     list():Observable<any>{

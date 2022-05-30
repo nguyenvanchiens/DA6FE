@@ -1,1 +1,31 @@
-<p>kieu-xe works!</p>
+<div class="send-request">
+    <button nz-button nzType="danger" [disabled]="setOfCheckedId.size === 0" [nzLoading]="loading"
+        (click)="sendRequest()">
+        Xóa !
+    </button>
+    <span>Chọn {{ setOfCheckedId.size }} dữ liệu</span>
+</div>
+<nz-table #rowSelectionTable nzShowPagination nzShowSizeChanger [nzData]="listOfData"
+    (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
+    <thead>
+        <tr>
+            <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
+            <th>Số thứ tự</th>
+            <th>Tên kiểu xẻ</th>
+            <th>Ngày tạo</th>
+            <th>Ngày cập nhật</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+            <td [nzChecked]="setOfCheckedId.has(data.maKieuXe)"
+                (nzCheckedChange)="onItemChecked(data.maKieuXe, $event)"></td>
+            <td>{{ data.maKieuXe }}</td>
+            <td>{{ data.tenKieuXe }}</td>
+            <td>{{ data.createdDate }}</td>
+            <td>{{ data.modifiedDate }}</td>
+            <td><button><i nz-icon nzType="edit" nzTheme="outline"></i></button> | <button><i nz-icon nzType="delete" nzTheme="outline"></i></button></td>
+        </tr>
+    </tbody>
+</nz-table>

@@ -1,6 +1,6 @@
 export interface KieuXe {
     maKieuXe: number;
-    tenKieu: string;
+    tenKieuXe: string;
     createdDate: string;
     modifiedDate: string;
     disabled?: boolean;

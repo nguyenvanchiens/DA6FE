@@ -7,12 +7,12 @@ import { environment } from "src/environments/environment";
     providedIn: 'root'
 })
 
-export class ThanhPhanVaiBaService {
+export class ThanhPhanVaiService {
     
     constructor(private api: ApiService){}
 
     url = {
-        list: "Type/GetAllThạnhPhanVaiBa",
+        list: "Type/GetAllThanhPhanVai",
     }
 
     list():Observable<any>{

@@ -1,6 +1,6 @@
 export interface KieuThanSau {
     maKieuThanSau: number;
-    tenKieu: string;
+    tenKieuThanSau: string;
     createdDate: string;
     modifiedDate: string;
     disabled?: boolean;

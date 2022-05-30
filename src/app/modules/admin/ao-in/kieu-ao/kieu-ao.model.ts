@@ -1,5 +1,7 @@
-export interface KieuAo{
-    MaKieuAo : number,
-    TenKieuAo : string,
-    MoTa : string,
+export interface KieuAo {
+    maKieuAo: number;
+    tenKieu: string;
+    createdDate: string;
+    modifiedDate: string;
+    disabled?: boolean;
 }

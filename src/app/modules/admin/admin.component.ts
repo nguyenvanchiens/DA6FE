@@ -1,4 +1,6 @@
+import { JsonpClientBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -7,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
   isCollapsed = true;
-
-  constructor() { }
+  name = JSON.parse(localStorage.getItem('name'))
+  constructor(
+    private route: Router) { }
 
   ngOnInit(): void {
   }
-
+  logOut(){
+    localStorage.clear()
+    this.route.navigate(['/login'], {});
+  }
 }

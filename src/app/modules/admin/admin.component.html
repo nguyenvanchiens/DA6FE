@@ -65,7 +65,7 @@
           </span>
           <nz-page-header-extra>
             <nz-avatar style="margin-right: 0px; background-color: #04203a" nzText="CD" nz-page-header-avatar nzSize="large"></nz-avatar>
-            <nz-page-header-title style="font-size: 15px; margin-right: 0px;">Vũ Chung Dũng</nz-page-header-title>
+            <nz-page-header-title style="font-size: 15px; margin-right: 0px;">{{ name }}</nz-page-header-title>
             <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu" style="border: none; padding: 0">
               <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top; margin-right: 40px;"></i>
             </button>
@@ -73,7 +73,7 @@
               <ul nz-menu>
                 <li nz-menu-item>Thông tin tài khoản</li>
                 <li nz-menu-item>Đôi mật khẩu</li>
-                <li nz-menu-item>Đăng xuất</li>
+                <li (click)="logOut()" nz-menu-item>Đăng xuất</li>
               </ul>
             </nz-dropdown-menu>
           </nz-page-header-extra>

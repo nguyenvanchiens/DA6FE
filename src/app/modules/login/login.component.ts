@@ -25,12 +25,13 @@ export class LoginComponent implements OnInit {
     console.log(this.validateForm.value)
     this.api.login(this.validateForm.value).subscribe(
       (response: any)=>{
-        if(response){
-          localStorage.setItem('token',JSON.stringify(response.result));
+        if(response.token){
+          localStorage.setItem('token',JSON.stringify(response.token));
+          localStorage.setItem('name',JSON.stringify(response.name))
           this.route.navigate(['/admin'], {});
         }
         else{
-          console.log("Tài khoản hoặc mật khẩu không hợp lệ","")
+          this.notifi.error("LỖI","Tài khoản hoặc mật khẩu không hợp lệ")
         }
       },
       (err)=>{

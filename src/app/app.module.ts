@@ -10,7 +10,7 @@ import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IconsProviderModule } from './shared/modules/icons-provider.module';
+import { AuthenticationGuard } from './core/guards/authentication.guard';
 
 registerLocaleData(en);
 
@@ -26,7 +26,13 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { 
+      provide: NZ_I18N, 
+      useValue: en_US
+    },
+    AuthenticationGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

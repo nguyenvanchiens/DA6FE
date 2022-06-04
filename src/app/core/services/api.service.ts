@@ -10,8 +10,8 @@ import { map } from 'rxjs/operators';
 export class ApiService {
     constructor(private http: HttpClient) { }
 
-    getList(url: string, filter: FilterModel): Observable<any> {
-        return this.http.post<any>(url, filter).pipe(
+    list(url: string): Observable<any> {
+        return this.http.get<any>(url).pipe(
             map((data: any) => {
                 if (data != null) {
                     return data;
@@ -63,16 +63,5 @@ export class ApiService {
                 return null;
             })
         )
-    }
-
-    dropDown(url: string): Observable<any> {
-        return this.http.get<any>(url).pipe(
-            map((data: any) => {
-                if (data != null) {
-                    return data;
-                }
-                return null;
-            })
-        );
     }
 }

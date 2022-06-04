@@ -16,6 +16,6 @@ export class KieuAoService {
     }
 
     list():Observable<any>{
-        return this.api.dropDown(`${environment.apiUrl}${this.url.list}`);
+        return this.api.list(`${environment.apiUrl}${this.url.list}`);
     }
 }

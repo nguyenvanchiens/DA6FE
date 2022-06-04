@@ -8,6 +8,7 @@ import { DauVaoComponent } from './dau-vao/dau-vao.component';
 import { KetQuaComponent } from './ket-qua/ket-qua.component';
 import { FormsModule } from '@angular/forms';
 import { DauRaComponent } from './dau-ra/dau-ra.component';
+import { DocumentEditorContainerModule } from '@syncfusion/ej2-angular-documenteditor';
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     RouterModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    DocumentEditorContainerModule
   ]
 })
 export class AoOutModule { }

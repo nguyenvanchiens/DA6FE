@@ -45,8 +45,7 @@ const routes: Routes = [
     SharedModule
   ],
   providers: [
-    ApiService,
-    KieuAoService
+    ApiService
   ]
 })
 export class AoInModule { }

@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { AoOutComponent } from './ao-out.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { LoaiAoComponent } from './loai-ao/loai-ao.component';
 import { DauVaoComponent } from './dau-vao/dau-vao.component';
 import { KetQuaComponent } from './ket-qua/ket-qua.component';
 import { FormsModule } from '@angular/forms';
 import { DauRaComponent } from './dau-ra/dau-ra.component';
 import { DocumentEditorContainerModule } from '@syncfusion/ej2-angular-documenteditor';
+import { LoaiDauRaComponent } from './loai-dau-ra/loai-dau-ra.component';
 
 const routes: Routes = [
   {
@@ -21,10 +21,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AoOutComponent,
-    LoaiAoComponent,
     DauVaoComponent,
     KetQuaComponent,
-    DauRaComponent
+    DauRaComponent,
+    LoaiDauRaComponent
   ],
   imports: [
     CommonModule,

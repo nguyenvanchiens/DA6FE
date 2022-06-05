@@ -40,6 +40,12 @@ const routes: Routes = [
         canActivateChild:[AuthenticationGuard],
         loadChildren: () => import('./tai-lieu/tai-lieu.module').then(m=>m.TaiLieuModule)
       },
+      {
+        path:'phu-thuoc',
+        canActivate:[AuthenticationGuard],
+        canActivateChild:[AuthenticationGuard],
+        loadChildren: () => import('./phu-thuoc/phu-thuoc.module').then(m=>m.PhuThuocModule)
+      },
     ]
   }
 ]

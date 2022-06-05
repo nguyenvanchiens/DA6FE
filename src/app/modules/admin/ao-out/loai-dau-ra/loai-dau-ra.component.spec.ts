@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoaiAoComponent } from './loai-ao.component';
+import { LoaiDauRaComponent } from './loai-dau-ra.component';
 
-describe('LoaiAoComponent', () => {
-  let component: LoaiAoComponent;
-  let fixture: ComponentFixture<LoaiAoComponent>;
+describe('LoaiDauRaComponent', () => {
+  let component: LoaiDauRaComponent;
+  let fixture: ComponentFixture<LoaiDauRaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoaiAoComponent ]
+      declarations: [ LoaiDauRaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoaiAoComponent);
+    fixture = TestBed.createComponent(LoaiDauRaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

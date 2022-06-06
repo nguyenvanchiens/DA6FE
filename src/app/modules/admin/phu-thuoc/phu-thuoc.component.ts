@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DauRaComponent } from './dau-ra/dau-ra.component';
+import { GanOptionComponent } from './gan-option/gan-option.component';
+import { LoaiDauRaComponent } from './loai-dau-ra/loai-dau-ra.component';
+import { SanPhamComponent } from './san-pham/san-pham.component';
 
 @Component({
   selector: 'app-phu-thuoc',
@@ -6,10 +10,65 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./phu-thuoc.component.css']
 })
 export class PhuThuocComponent implements OnInit {
+  @ViewChild(SanPhamComponent) sanpham: SanPhamComponent;
+  @ViewChild(LoaiDauRaComponent) loaidaura: LoaiDauRaComponent;
+  @ViewChild(DauRaComponent) daura: DauRaComponent;
+  @ViewChild(GanOptionComponent) option: GanOptionComponent;
+
+  sanphamId = "";
+  loaidauraId = "";
+  dauraId = "";
+  
+  current = 0;
+  index = 1;
+
+  pre(): void {
+    this.current -= 1;
+    if (this.index < 4) {
+      this.index += 1
+    }
+    this.changeContent();
+  }
+
+  next(): void {
+    this.current += 1;
+    if (this.index > 0) {
+      this.index += 1
+    }
+    this.changeContent();
+  }
+
+  done(): void {
+    console.log('done');
+  }
+
+  changeContent(): void {
+    switch (this.current) {
+      case 0: {
+        this.index = 1;
+        break;
+      }
+      case 1: {
+        this.index = 2;
+        this.sanphamId = this.sanpham.defaultSelected;
+        break;
+      }
+      case 2: {
+        this.index = 3;
+        break;
+      }
+      case 3: {
+        this.index = 4;
+        break;
+      }
+      default: {
+        this.index = 0;
+      }
+    }
+  }
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

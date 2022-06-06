@@ -1,1 +1,24 @@
-<p>phu-thuoc works!</p>
+<nz-steps [nzCurrent]="current">
+    <nz-step nzTitle="Chọn sản phẩm"></nz-step>
+    <nz-step nzTitle="Chọn loại đầu ra"></nz-step>
+    <nz-step nzTitle="Chọn đầu ra"></nz-step>
+    <nz-step nzTitle="Gắn biến phụ thuộc"></nz-step>
+</nz-steps>
+
+<div class="steps-content">
+    <app-san-pham *ngIf="index == 1"></app-san-pham>
+    <app-loai-dau-ra *ngIf="index == 2" [sanphamID]="sanphamId"></app-loai-dau-ra>
+    <app-dau-ra *ngIf="index == 3"></app-dau-ra>
+    <app-gan-option *ngIf="index == 4"></app-gan-option>
+</div>
+<div class="steps-action">
+    <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+        <span>Quay lại</span>
+    </button>
+    <button nz-button nzType="default" (click)="next()" *ngIf="current < 3">
+        <span>Tiếp tục</span>
+    </button>
+    <button nz-button nzType="primary" (click)="done()" *ngIf="current === 3">
+        <span>Hoàn thành</span>
+    </button>
+</div>

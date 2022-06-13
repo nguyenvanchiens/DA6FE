@@ -1,6 +1,5 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { filter } from 'rxjs/operators';
 import { FilterModel } from 'src/app/core/models/filter.model';
 import { TaiLieu } from './tai-lieu.model';
 import { TaiLieuService } from './tai-lieu.service';
@@ -11,6 +10,7 @@ import { TaiLieuService } from './tai-lieu.service';
   styleUrls: ['./tai-lieu.component.css']
 })
 export class TaiLieuComponent implements OnInit {
+  visible = false;
   datepipe: DatePipe = new DatePipe('en-US')
   checked = false;
   loading = false;
@@ -76,5 +76,16 @@ export class TaiLieuComponent implements OnInit {
     const listOfEnabledData = this.listOfCurrentPageData.filter(({ disabled }) => !disabled);
     this.checked = listOfEnabledData.every(({ maFile }) => this.setOfCheckedId.has(maFile));
     this.indeterminate = listOfEnabledData.some(({ maFile }) => this.setOfCheckedId.has(maFile)) && !this.checked;
+  }
+
+  reset(): void {
+    this.keyword = '';
+    this.getList()
+  }
+
+  search(): void {
+    this.visible = false;
+    this.getList()
+    this.listOfData = this.listOfData.filter((item: TaiLieu) => item.tenFile.indexOf(this.keyword) !== -1);
   }
 }

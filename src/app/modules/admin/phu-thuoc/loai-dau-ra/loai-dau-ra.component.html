@@ -4,9 +4,5 @@
 </div>
 <br>
 <nz-radio-group>
-    <label style="font-size: 15px; margin-left: 42px;" nz-radio nzValue="A">Lỗi sản phẩm</label>
-    <label style="font-size: 15px; margin-left: 42px;" nz-radio nzValue="B">Định mức vải</label>
-    <label style="font-size: 15px; margin-left: 42px;" nz-radio nzValue="C">Định mức phụ liệu</label>
-    <label style="font-size: 15px; margin-left: 42px;" nz-radio nzValue="D">Tiêu chuẩn kỹ thuật</label>
-    <label style="font-size: 15px; margin-left: 42px;" nz-radio nzValue="E">Tính giá gia công</label>
+    <label *ngFor="let item of listOfData" style="font-size: 15px; margin-left: 42px;" nz-radio nzValue="{{item.id}}">{{item.name}}</label>
 </nz-radio-group>

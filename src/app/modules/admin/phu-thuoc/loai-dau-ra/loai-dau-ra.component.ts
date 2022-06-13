@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LoaiDauRa } from './loai-dau-ra.model';
+import { LoaiDauRaService } from './loai-dau-ra.service';
 
 @Component({
   selector: 'app-loai-dau-ra',
@@ -6,10 +8,21 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./loai-dau-ra.component.css']
 })
 export class LoaiDauRaComponent implements OnInit {
-  @Input() sanphamID: string;
-  constructor() { }
+  listOfData: readonly LoaiDauRa[] = [];
+
+  constructor(
+    private loaidauraApi: LoaiDauRaService
+  ) { }
 
   ngOnInit(): void {
-    console.log(this.sanphamID)
+    this.getList();
+  }
+
+  getList(){
+    this.loaidauraApi.list().subscribe((res:any)=>{
+      if(res){
+        this.listOfData = res;
+      }
+    })
   }
 }

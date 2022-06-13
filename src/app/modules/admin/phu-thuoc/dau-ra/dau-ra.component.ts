@@ -9,14 +9,13 @@ import { DauRaService } from './dau-ra.service';
 })
 export class DauRaComponent implements OnInit {
   @Input() loaidauraId: string;
-  dauraId = ''
+  defaultSelectedDauRa = ''
   listOfData: readonly DauRa[] = [];
   constructor(
     private dauraApi: DauRaService
   ) { }
 
   ngOnInit(): void {
-    this.dauraId = this.loaidauraId;
     this.getList();
   }
 

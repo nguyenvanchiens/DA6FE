@@ -3,6 +3,9 @@
     <small>(Bằng cách chọn 1 trong các lựa chọn bên dưới)</small>
 </div>
 <br>
-<nz-radio-group>
-    <label *ngFor="let item of listOfData" style="font-size: 15px; margin-left: 42px; margin-bottom: 20px;" nz-radio nzValue="{{item.maDauRa}}">{{item.tenDauRa}}</label>
-</nz-radio-group>
+
+<div nz-row [nzGutter]="[16, 24]">
+    <nz-radio-group [(ngModel)]="defaultSelectedDauRa" nz-col class="gutter-row" style="text-align: left;" [nzSpan]="6" *ngFor="let item of listOfData">
+        <label nz-radio nzValue="{{item.maDauRa}}">{{item.tenDauRa}}</label>
+    </nz-radio-group>
+</div>

@@ -25,3 +25,9 @@ html{
   font-size: 18px;
   font-weight: 700;
 }
+.ant-checkbox-wrapper{
+  width: 260px
+}
+.ant-checkbox-group-item {
+  margin-right: 0px;
+}

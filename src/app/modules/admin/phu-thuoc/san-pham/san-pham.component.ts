@@ -9,7 +9,7 @@ import { SanPhamService } from './san-pham.service';
   styleUrls: ['./san-pham.component.css']
 })
 export class SanPhamComponent implements OnInit {
-  defaultSelected = "1";
+  defaultSelectedSanPham = "1";
   listOfData: readonly SanPham[] = [];
 
   constructor(
@@ -17,7 +17,7 @@ export class SanPhamComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.defaultSelected = '1';
+    this.defaultSelectedSanPham = '1';
     this.getList();
   }
 

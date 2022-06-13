@@ -39,7 +39,7 @@ export class PhuThuocComponent implements OnInit {
   }
 
   done(): void {
-    console.log('done');
+    console.log(this.sanphamId,this.loaidauraId,this.dauraId);
   }
 
   changeContent(): void {
@@ -51,7 +51,7 @@ export class PhuThuocComponent implements OnInit {
       case 1: {
         this.index = 2;
         if(this.sanpham != undefined){
-          this.sanphamId = this.sanpham?.defaultSelected;
+          this.sanphamId = this.sanpham?.defaultSelectedSanPham;
         }
         else{
           this.sanphamId = "1";
@@ -61,7 +61,7 @@ export class PhuThuocComponent implements OnInit {
       case 2: {
         this.index = 3;
         if(this.loaidaura != undefined){
-          this.loaidauraId = this.loaidaura?.ldrId;
+          this.loaidauraId = this.loaidaura?.defaultSelectedLoaiDauRa;
         }
         else if (this.dauraId) {
           this.loaidauraId = this.dauraId;
@@ -73,7 +73,7 @@ export class PhuThuocComponent implements OnInit {
       }
       case 3: {
         this.index = 4;
-        this.dauraId = this.daura.dauraId;
+        this.dauraId = this.daura.defaultSelectedDauRa;
         break;
       }
       default: {

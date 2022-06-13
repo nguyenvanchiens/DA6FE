@@ -28,8 +28,10 @@ export class GanOptionComponent implements OnInit {
     })
   }
 
-  log(value: object[]): void {
-    console.log(value);
+  checked(list: any[]): void {
+    let result = list.filter((e) => {
+      return e.checked == true;
+    });
   }
 }
 

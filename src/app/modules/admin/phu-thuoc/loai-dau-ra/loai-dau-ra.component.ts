@@ -10,7 +10,7 @@ import { LoaiDauRaService } from './loai-dau-ra.service';
 export class LoaiDauRaComponent implements OnInit {
   @Input() sanphamId: string;
   listOfData: readonly LoaiDauRa[] = [];
-  ldrId = ''
+  defaultSelectedLoaiDauRa = ''
   constructor(
     private loaidauraApi: LoaiDauRaService
   ) { }

@@ -8,8 +8,9 @@ import { LoaiDauRaService } from './loai-dau-ra.service';
   styleUrls: ['./loai-dau-ra.component.css']
 })
 export class LoaiDauRaComponent implements OnInit {
+  @Input() sanphamId: string;
   listOfData: readonly LoaiDauRa[] = [];
-
+  ldrId = ''
   constructor(
     private loaidauraApi: LoaiDauRaService
   ) { }
@@ -19,7 +20,7 @@ export class LoaiDauRaComponent implements OnInit {
   }
 
   getList(){
-    this.loaidauraApi.list().subscribe((res:any)=>{
+    this.loaidauraApi.list(this.sanphamId).subscribe((res:any)=>{
       if(res){
         this.listOfData = res;
       }

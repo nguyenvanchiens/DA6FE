@@ -3,6 +3,6 @@
     <small>(Bằng cách chọn 1 trong các lựa chọn bên dưới)</small>
 </div>
 <br>
-<nz-radio-group>
-    <label *ngFor="let item of listOfData" style="font-size: 15px; margin-left: 42px;" nz-radio nzValue="{{item.id}}">{{item.name}}</label>
+<nz-radio-group [(ngModel)]="ldrId">
+    <label *ngFor="let item of listOfData" style="font-size: 15px; margin-left: 42px;" nz-radio nzValue="{{item.maLoaiDauRa}}">{{item.tenLoaiDauRa}}</label>
 </nz-radio-group>

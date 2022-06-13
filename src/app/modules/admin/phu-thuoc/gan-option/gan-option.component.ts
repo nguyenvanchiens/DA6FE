@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { Options } from './gan-option.model';
+import { OptionService } from './gan-option.service';
 @Component({
   selector: 'app-gan-option',
   templateUrl: './gan-option.component.html',
   styleUrls: ['./gan-option.component.css']
 })
 export class GanOptionComponent implements OnInit {
-
-  constructor() { }
+  @Input() dauraId: string;
+  listOfData: Options[] = [];
+  constructor(
+    private optionApi: OptionService
+  ) { }
 
   ngOnInit(): void {
+    this.getList();
   }
 
+  getList(){
+    this.optionApi.list().subscribe((res:any)=>{
+      if(res){
+        res.forEach(element => {
+          let option = new Options(element.value, element.lable)
+          this.listOfData.push(option)
+        });
+      }
+    })
+  }
+
+  log(value: object[]): void {
+    console.log(value);
+  }
 }
+

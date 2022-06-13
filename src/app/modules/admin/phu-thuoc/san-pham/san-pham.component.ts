@@ -17,6 +17,7 @@ export class SanPhamComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.defaultSelected = '1';
     this.getList();
   }
 

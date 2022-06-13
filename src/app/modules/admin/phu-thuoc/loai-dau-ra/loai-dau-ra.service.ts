@@ -12,10 +12,10 @@ export class LoaiDauRaService {
     constructor(private api: ApiService){}
 
     url = {
-        list: "LoaiDauRa/get-all-loai-dau-ra",
+        list: "SanPhamLoaiDauRa/get-san-pham-loai-dau-ra",
     }
 
-    list():Observable<any>{
-        return this.api.list(`${environment.apiUrl}${this.url.list}`);
+    list(id: string):Observable<any>{
+        return this.api.list(`${environment.apiUrl}${this.url.list}`+"?MaSp="+ id);
     }
 }

@@ -1,4 +1,6 @@
 export interface LoaiDauRa {
     id: number;
-    name: string;
+    maSanPham: number;
+    maLoaiDauRa: string;
+    tenLoaiDauRa: string;
 }

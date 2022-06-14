@@ -7,8 +7,8 @@
 
 <div class="steps-content">
     <app-loai-dau-ra *ngIf="index == 1"></app-loai-dau-ra>
-    <app-dau-ra *ngIf="index == 2"></app-dau-ra>
-    <app-dau-vao *ngIf="index == 3"></app-dau-vao>
+    <app-dau-ra *ngIf="index == 2" [loaidauraId]="loaidauraId"></app-dau-ra>
+    <app-dau-vao *ngIf="index == 3" [dauvaoId]="dauvaoId"></app-dau-vao>
     <app-ket-qua *ngIf="index == 4"></app-ket-qua>
 </div>
 <div class="steps-action">

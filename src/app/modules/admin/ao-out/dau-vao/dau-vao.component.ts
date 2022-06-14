@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DauVao } from './dau-vao.model';
+import { DauVaoService } from './dau-vao.service';
 
 @Component({
   selector: 'app-dau-vao',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dau-vao.component.css']
 })
 export class DauVaoComponent implements OnInit {
+  @Input() dauvaoId: string;
+  listOfData: DauVao[] = [];
   selectedValue = '';
-  constructor() { }
+  constructor(
+    private dauvaoApi: DauVaoService
+  ) { }
 
   ngOnInit(): void {
+    this.getList();
   }
 
+  getList() {
+  }
 }

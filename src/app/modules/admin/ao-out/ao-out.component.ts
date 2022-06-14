@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DauRaComponent } from './dau-ra/dau-ra.component';
+import { DauVaoComponent } from './dau-vao/dau-vao.component';
+import { LoaiDauRaComponent } from './loai-dau-ra/loai-dau-ra.component';
 
 @Component({
   selector: 'app-ao-out',
@@ -6,6 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ao-out.component.css']
 })
 export class AoOutComponent implements OnInit {
+  @ViewChild(LoaiDauRaComponent) loaidaura: LoaiDauRaComponent;
+  @ViewChild(DauRaComponent) daura: DauRaComponent;
+  @ViewChild(DauVaoComponent) option: DauVaoComponent;
+
+  sanphamId = "";
+  loaidauraId = "";
+  dauvaoId = "";
+
   current = 0;
   index = 1;
 
@@ -37,6 +48,12 @@ export class AoOutComponent implements OnInit {
       }
       case 1: {
         this.index = 2;
+        if(this.loaidaura != undefined){
+          this.loaidauraId = this.loaidaura.defaultSelectedLoaiDauRa;
+        }
+        else{
+          this.loaidauraId = "0";
+        }
         break;
       }
       case 2: {

@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { DauRaComponent } from './dau-ra/dau-ra.component';
 import { GanOptionComponent } from './gan-option/gan-option.component';
 import { LoaiDauRaComponent } from './loai-dau-ra/loai-dau-ra.component';
+import { PhuThuoc } from './phu-thuoc.model';
+import { PhuThuocService } from './phu-thuoc.service';
 import { SanPhamComponent } from './san-pham/san-pham.component';
 
 @Component({
@@ -22,7 +25,15 @@ export class PhuThuocComponent implements OnInit {
   current = 0;
   index = 1;
 
-  pre(): void {
+  constructor(
+    private phuthuocApi: PhuThuocService,
+    private notifi: NzNotificationService
+  ) { }
+
+  ngOnInit(){
+  }
+
+  pre(){
     this.current -= 1;
     if (this.index < 4) {
       this.index += 1
@@ -30,7 +41,7 @@ export class PhuThuocComponent implements OnInit {
     this.changeContent();
   }
 
-  next(): void {
+  next(){
     this.current += 1;
     if (this.index > 0) {
       this.index += 1
@@ -38,11 +49,29 @@ export class PhuThuocComponent implements OnInit {
     this.changeContent();
   }
 
-  done(): void {
-    console.log(this.sanphamId,this.loaidauraId,this.dauraId);
+  done(){
+    let req : PhuThuoc[] = [];
+    let arrTemp = this.option.listResult;
+    arrTemp.forEach(e=>{
+      let item = new PhuThuoc(e,+this.dauraId, +this.loaidauraId, +this.sanphamId)
+      req.push(item)
+    })
+    var count = 0;
+    req.forEach(e=>{
+      this.phuthuocApi.Create(e).subscribe(
+      (res:any)=>{
+        if (res){
+          count++;
+        }
+      },(err)=>{
+        this.notifi.error("LỖI","Không thể kết nối đến Server!")
+      })
+    })
+    var message = "Gắn "+ count + " phụ thuộc thành công!";
+    this.notifi.success("THÔNG BÁO",message)
   }
 
-  changeContent(): void {
+  changeContent(){
     switch (this.current) {
       case 0: {
         this.index = 1;
@@ -80,10 +109,5 @@ export class PhuThuocComponent implements OnInit {
         this.index = 0;
       }
     }
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
   }
 }

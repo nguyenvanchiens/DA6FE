@@ -9,6 +9,7 @@ import { OptionService } from './gan-option.service';
 export class GanOptionComponent implements OnInit {
   @Input() dauraId: string;
   listOfData: Options[] = [];
+  listResult: any[] = [];
   constructor(
     private optionApi: OptionService
   ) { }
@@ -17,9 +18,9 @@ export class GanOptionComponent implements OnInit {
     this.getList();
   }
 
-  getList(){
-    this.optionApi.list().subscribe((res:any)=>{
-      if(res){
+  getList() {
+    this.optionApi.list().subscribe((res: any) => {
+      if (res) {
         res.forEach(element => {
           let option = new Options(element.value, element.lable)
           this.listOfData.push(option)
@@ -28,10 +29,11 @@ export class GanOptionComponent implements OnInit {
     })
   }
 
-  checked(list: any[]): void {
-    let result = list.filter((e) => {
-      return e.checked == true;
-    });
+  checked(list: any[]) {
+    this.listResult = list.filter((e) => { return e.checked == true })
+      .map((e) => {
+        return e.value;
+      })
   }
 }
 

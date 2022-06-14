@@ -1,15 +1,12 @@
 <div class="send-request">
-    <button nz-button nzType="danger" [disabled]="setOfCheckedId.size === 0" [nzLoading]="loading"
-        (click)="sendRequest()">
-        Xóa !
+    <button nz-button nzType="danger">
+        Thêm mới
     </button>
-    <span>Chọn {{ setOfCheckedId.size }} dữ liệu</span>
 </div>
 <nz-table #rowSelectionTable nzShowPagination nzShowSizeChanger [nzData]="listOfData"
     (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
     <thead>
         <tr>
-            <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
             <th>Số thứ tự</th>
             <th>Tên kiểu nẹp</th>
             <th>Ngày tạo</th>
@@ -19,8 +16,6 @@
     </thead>
     <tbody>
         <tr *ngFor="let data of rowSelectionTable.data">
-            <td [nzChecked]="setOfCheckedId.has(data.maKieuNep)"
-                (nzCheckedChange)="onItemChecked(data.maKieuNep, $event)"></td>
             <td>{{ data.maKieuNep }}</td>
             <td>{{ data.tenKieuNep }}</td>
             <td>{{ data.createdDate }}</td>

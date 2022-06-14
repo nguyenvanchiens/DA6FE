@@ -1,6 +1,12 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { FilterModel } from 'src/app/core/models/filter.model';
+import { ChiTietComponent } from './chi-tiet/chi-tiet.component';
 import { TaiLieu } from './tai-lieu.model';
 import { TaiLieuService } from './tai-lieu.service';
 
@@ -10,6 +16,8 @@ import { TaiLieuService } from './tai-lieu.service';
   styleUrls: ['./tai-lieu.component.css']
 })
 export class TaiLieuComponent implements OnInit {
+  @ViewChild(ChiTietComponent) chitiet: ChiTietComponent;
+
   visible = false;
   datepipe: DatePipe = new DatePipe('en-US')
   checked = false;
@@ -20,8 +28,13 @@ export class TaiLieuComponent implements OnInit {
   setOfCheckedId = new Set<number>();
   filter = new FilterModel();
   keyword = '';
+  status = false;
 
-  constructor(private tailieuApi: TaiLieuService) { }
+  constructor(
+    private tailieuApi: TaiLieuService,
+    private msg: NzMessageService,
+    private http: HttpClient
+    ) { }
 
   ngOnInit(): void {
     this.getList();
@@ -37,6 +50,18 @@ export class TaiLieuComponent implements OnInit {
     })
   }
 
+  handleChange(info: NzUploadChangeParam): void {
+    if (info.file.status !== 'uploading') {
+      console.log(info.file, info.fileList);
+    }
+    if (info.file.status === 'done') {
+      this.msg.success(`${info.file.name} Tải lên tài liệu thành công.`);
+      this.getList();
+    } else if (info.file.status === 'error') {
+      this.msg.error(`${info.file.name} Tải lên tài liệu thất bại.`);
+    }
+  }
+
   onCurrentPageDataChange(listOfCurrentPageData: readonly TaiLieu[]): void {
     this.listOfCurrentPageData = listOfCurrentPageData;
   }
@@ -50,5 +75,16 @@ export class TaiLieuComponent implements OnInit {
     this.visible = false;
     this.getList()
     this.listOfData = this.listOfData.filter((item: TaiLieu) => item.tenFile.indexOf(this.keyword) !== -1);
+  }
+
+  changeStatus($event:boolean){
+    if($event == false){
+      this.getList();
+    }
+    this.status = $event;
+  }
+
+  view(){
+    this.chitiet.showTaiLieu(null);
   }
 }

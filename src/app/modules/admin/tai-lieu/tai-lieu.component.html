@@ -1,57 +1,62 @@
-<div class="send-request">
-    <button nz-button nzType="danger">
-        Thêm mới
-    </button>
-</div>
-<div>
-    <nz-table #rowSelectionTable nzShowPagination nzShowSizeChanger [nzData]="listOfData"
-        (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
-        <thead>
-            <tr>
-                <th>Số thứ tự</th>
-                <th nzCustomFilter>
-                    Tên tài liệu
-                    <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="keyword.length > 0" [nzDropdownMenu]="menu">
-                        <i nz-icon nzType="search"></i>
-                    </nz-filter-trigger>
-                </th>
-                <th>Kích cỡ</th>
-                <th>Ngày tạo</th>
-                <th>Ngày cập nhật</th>
-                <th>Thao tác</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let data of rowSelectionTable.data">
-                <td>{{ data.maFile }}</td>
-                <td>{{ data.tenFile }}</td>
-                <td>{{ data.size/102400 }} MB</td>
-                <td>{{ data.createdDate }}</td>
-                <td>{{ data.modifiedDate }}</td>
-                <td>
-                    <button>
-                        <i nz-icon nzType="edit" nzTheme="outline"></i>
-                    </button> 
-                    | 
-                    <button>
-                        <i nz-icon nzType="delete" nzTheme="outline"></i>
-                    </button>
-                    |
-                    <button>
-                        <i nz-icon nzType="zoom-in" nzTheme="outline"></i>
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </nz-table>
-    <nz-dropdown-menu #menu="nzDropdownMenu">
-        <div class="ant-table-filter-dropdown">
-            <div class="search-box">
-                <input type="text" nz-input placeholder="Tên tài liệu" [(ngModel)]="keyword" />
-                <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Tìm kiếm</button>
-                <button nz-button nzSize="small" (click)="reset()">Làm mới</button>
+<div [class.closed]="status">
+    <div class="send-request">
+        <nz-upload
+        nzAction="https://localhost:7284/api/File/importfile"
+        [nzHeaders]="{ authorization: 'authorization-text' }"
+        (nzChange)="handleChange($event)"
+      >
+        <button nz-button>
+          <i nz-icon nzType="upload"></i>
+          Tải tài liệu .doc | .docx
+        </button>
+      </nz-upload>
+    </div>
+    <div>
+        <nz-table #rowSelectionTable nzShowPagination nzShowSizeChanger [nzData]="listOfData"
+            (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
+            <thead>
+                <tr>
+                    <th>Số thứ tự</th>
+                    <th nzCustomFilter>
+                        Tên tài liệu
+                        <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="keyword.length > 0" [nzDropdownMenu]="menu">
+                            <i nz-icon nzType="search"></i>
+                        </nz-filter-trigger>
+                    </th>
+                    <th>Kích cỡ</th>
+                    <th>Ngày tạo</th>
+                    <th>Ngày cập nhật</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of rowSelectionTable.data">
+                    <td>{{ data.maFile }}</td>
+                    <td>{{ data.tenFile }}</td>
+                    <td>{{ data.size/102400 }} MB</td>
+                    <td>{{ data.createdDate }}</td>
+                    <td>{{ data.modifiedDate }}</td>
+                    <td>
+                        <button>
+                            <i nz-icon nzType="delete" nzTheme="outline"></i>
+                        </button>
+                        |
+                        <button (click)="view()">
+                            <i nz-icon nzType="zoom-in" nzTheme="outline"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <div class="ant-table-filter-dropdown">
+                <div class="search-box">
+                    <input type="text" nz-input placeholder="Tên tài liệu" [(ngModel)]="keyword" />
+                    <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Tìm kiếm</button>
+                    <button nz-button nzSize="small" (click)="reset()">Làm mới</button>
+                </div>
             </div>
-        </div>
-    </nz-dropdown-menu>
+        </nz-dropdown-menu>
+    </div>
 </div>
-<app-chi-tiet></app-chi-tiet>
+<app-chi-tiet (isShow)="changeStatus($event)"></app-chi-tiet>

@@ -1,0 +1,10 @@
+version: '3.4' 
+
+services: 
+ word-processor-server: 
+    image: syncfusion/word-processor-server:latest 
+      
+    volumes: 
+      - /Users/dungcvu/Desktop/DA6/DA6.Api/Template/
+    ports:
+    - "6002:80"

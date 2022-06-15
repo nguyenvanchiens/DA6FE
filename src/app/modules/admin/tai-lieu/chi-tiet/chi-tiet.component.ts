@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ToolbarService, DocumentEditorContainerComponent } from '@syncfusion/ej2-angular-documenteditor';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
@@ -31,11 +31,11 @@ export class ChiTietComponent implements OnInit {
     this.isShow.emit(false);
   }
 
-  showTaiLieu(file: Blob){
+  showTaiLieu(file: any){
     this.status = false;
     this.isShow.emit(true);
     const formData = new FormData();
-    formData.append('file', file, file.type);
+    formData.append('file', file, file.name);
     this.http.post(this.serviceLink+"Import", formData).subscribe((data:any) => {
       this.container.documentEditor.open(JSON.stringify(data));
     })

@@ -1,0 +1,10 @@
+<div style="padding-bottom: 20px; padding-top: 12px;">
+    <p style="font-size: 20px; padding-bottom: 15px; font-weight: 600;">Vui lòng lựa chọn <u>đầu ra</u> bạn mong muốn!</p>
+    <small>(Bằng cách chọn 1 trong các lựa chọn bên dưới)</small>
+</div>
+<br>
+<div nz-row [nzGutter]="[16, 24]">
+    <nz-radio-group [(ngModel)]="defaultSelectedDauRa" nz-col class="gutter-row" style="text-align: left;" [nzSpan]="6" *ngFor="let item of listOfData">
+        <label nz-radio nzValue="{{item.maDauRa}}">{{item.tenDauRa}}</label>
+    </nz-radio-group>
+</div>

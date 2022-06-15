@@ -1,4 +1,4 @@
 export interface DauRa {
-    id: number;
-    name: string;
+    maDauRa: number;
+    tenDauRa: string;
 }

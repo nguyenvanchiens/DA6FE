@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
@@ -84,7 +84,13 @@ export class TaiLieuComponent implements OnInit {
     this.status = $event;
   }
 
-  view(){
-    this.chitiet.showTaiLieu(null);
+  view(tenfile:string){
+    this.tailieuApi.download(tenfile).subscribe((data:HttpResponse<Blob>)=>{
+      if(data){
+        let downloadedFile = new Blob([data.body], { type: "application/octet-stream" });
+        var file = new File([downloadedFile], tenfile);
+        this.chitiet.showTaiLieu(file)
+      }
+    })
   }
 }

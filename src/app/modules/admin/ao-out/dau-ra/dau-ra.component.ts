@@ -23,6 +23,7 @@ export class DauRaComponent implements OnInit {
     this.dauraApi.list(this.loaidauraId).subscribe((res:any)=>{
       if(res){
         this.listOfData = res;
+        console.log(this.listOfData)
       }
     })
   }

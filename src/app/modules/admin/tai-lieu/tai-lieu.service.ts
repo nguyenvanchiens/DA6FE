@@ -30,7 +30,7 @@ export class TaiLieuService {
 
     download(tenfile:string):Observable<any>{
         return this.http.get(`${environment.apiUrl}${this.url.download}`+"?fileName=" +tenfile, {
-            responseType: 'blob'
+            responseType: 'blob',
         }); 
     }
 }

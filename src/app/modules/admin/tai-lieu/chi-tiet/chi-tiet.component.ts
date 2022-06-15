@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ToolbarService, DocumentEditorContainerComponent } from '@syncfusion/ej2-angular-documenteditor';
+import { isNullOrUndefined } from '@syncfusion/ej2-base';
+import { TitleBar } from '../../title-bar';
 
 @Component({
   selector: 'app-chi-tiet',
@@ -11,10 +13,14 @@ import { ToolbarService, DocumentEditorContainerComponent } from '@syncfusion/ej
 export class ChiTietComponent implements OnInit {
   @Output() isShow = new EventEmitter<boolean>();
   @ViewChild('documenteditor_ref') public container! : DocumentEditorContainerComponent;
+  titleBar: TitleBar;
   status : boolean;
+  serviceLink: string = "";
   constructor(
     private http : HttpClient
-  ) { }
+  ) {
+    this.serviceLink = 'https://ej2services.syncfusion.com/production/web-services/api/documenteditor/';
+   }
 
   ngOnInit(): void {
     this.status = true;
@@ -25,23 +31,13 @@ export class ChiTietComponent implements OnInit {
     this.isShow.emit(false);
   }
 
-  showTaiLieu(file: File){
+  showTaiLieu(file: Blob){
     this.status = false;
     this.isShow.emit(true);
-    var form = new FormData()
-    form.append("file",file)
-  }
-  uploadFile = (files) => {
-    if (files.length === 0) {
-      return;
-    }
-
-    let fileToUpload = <File>files[0];
     const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
-    console.log(this.container.documentEditor)
-    this.http.post('https://ej2services.syncfusion.com/production/web-services/api/documenteditor/Import', formData).subscribe((data:any) => {
-      
+    formData.append('file', file, file.type);
+    this.http.post(this.serviceLink+"Import", formData).subscribe((data:any) => {
+      this.container.documentEditor.open(JSON.stringify(data));
     })
   }
 }

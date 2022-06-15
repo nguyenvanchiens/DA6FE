@@ -87,7 +87,8 @@ export class TaiLieuComponent implements OnInit {
   view(tenfile:string){
     this.tailieuApi.download(tenfile).subscribe((data:HttpResponse<Blob>)=>{
       if(data){
-        let downloadedFile = new Blob([data.body], { type: "application/octet-stream" });
+        console.log(data);
+        const downloadedFile = new Blob([data.body], { type: data.body.type });
         var file = new File([downloadedFile], tenfile);
         this.chitiet.showTaiLieu(file)
       }

@@ -12,10 +12,10 @@ export class DauVaoService {
     constructor(private api: ApiService){}
 
     url = {
-        list: "LoaiDauRaDauRa/get-dau-ra-loai-dau-ra",
+        list: "PhuThuoc/get-phu-thuoc-by-list-id",
     }
 
-    list(id: string):Observable<any>{
-        return this.api.list(`${environment.apiUrl}${this.url.list}`+"?LoaiDauRa="+ id);
+    list(madaura: number, maloaidaura: number):Observable<any>{
+        return this.api.list(`${environment.apiUrl}${this.url.list}`+"?MaDauRa="+madaura+"&MaLoaiDauRa="+maloaidaura+"&MaSanPham=1");
     }
 }

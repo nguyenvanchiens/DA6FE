@@ -13,9 +13,10 @@ export class AoOutComponent implements OnInit {
   @ViewChild(DauRaComponent) daura: DauRaComponent;
   @ViewChild(DauVaoComponent) option: DauVaoComponent;
 
-  sanphamId = "";
+  sanphamId = "1";
   loaidauraId = "";
-  dauvaoId = "";
+  dauraId = "";
+  optionId = "";
 
   current = 0;
   index = 1;
@@ -52,12 +53,15 @@ export class AoOutComponent implements OnInit {
           this.loaidauraId = this.loaidaura.defaultSelectedLoaiDauRa;
         }
         else{
-          this.loaidauraId = "0";
+          this.loaidauraId = this.optionId;
         }
         break;
       }
       case 2: {
         this.index = 3;
+        if(this.daura != undefined){
+          this.dauraId = this.daura.defaultSelectedDauRa;
+        }
         break;
       }
       case 3: {

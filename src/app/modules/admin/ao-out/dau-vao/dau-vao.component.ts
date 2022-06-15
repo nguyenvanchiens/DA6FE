@@ -8,8 +8,10 @@ import { DauVaoService } from './dau-vao.service';
   styleUrls: ['./dau-vao.component.css']
 })
 export class DauVaoComponent implements OnInit {
-  @Input() dauvaoId: string;
+  @Input() dauraId: string;
+  @Input() loaidauraId: string;
   listOfData: DauVao[] = [];
+  value = '';
   selectedValue = '';
   constructor(
     private dauvaoApi: DauVaoService
@@ -20,5 +22,10 @@ export class DauVaoComponent implements OnInit {
   }
 
   getList() {
+    this.dauvaoApi.list(+this.dauraId,+this.loaidauraId).subscribe((data)=>{
+      if (data){
+        this.listOfData = data;
+      }
+    })
   }
 }

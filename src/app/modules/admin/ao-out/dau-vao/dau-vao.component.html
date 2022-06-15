@@ -1,29 +1,19 @@
-<div class="tab-content">
-    <div>
-        <span style="font-size: 14px; font-weight: 600;">Kiểu áo:</span>
-        <nz-select [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="Chọn kiểu áo" nzShowSearch>
-            <nz-option-group nzLabel="Chủng loại">
-                <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-                <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
-            </nz-option-group>
-        </nz-select>
-    </div>
-    <div>
-        <span style="font-size: 14px; font-weight: 600;">Kiểu áo:</span>
-        <nz-select [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="Chọn kiểu áo" nzShowSearch>
-            <nz-option-group nzLabel="Chủng loại">
-                <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-                <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
-            </nz-option-group>
-        </nz-select>
-    </div>
-    <div>
-        <span style="font-size: 14px; font-weight: 600;">Kiểu áo:</span>
-        <nz-select [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="Chọn kiểu áo" nzShowSearch>
-            <nz-option-group nzLabel="Chủng loại">
-                <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-                <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
-            </nz-option-group>
-        </nz-select>
+<div style="padding-bottom: 20px; padding-top: 12px;">
+    <p style="font-size: 20px; padding-bottom: 15px; font-weight: 600;">Vui lòng lựa chọn <u>thông tin</u> bạn mong muốn!</p>
+    <small>(Bằng cách chọn các lựa chọn bên dưới)</small>
+</div>
+<div class="tab-content" style="padding-left: 0px">
+    <div nz-row [nzGutter]="[16, 24]">
+        <div nz-col class="gutter-row" [nzSpan]="6" *ngFor="let item of listOfData">
+            <span style="font-size: 14px; font-weight: 600;">{{item.tenOptionDauRa}}:</span>
+            <nz-select *ngIf="item.type == 0" [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="Chọn kiểu áo"
+                nzShowSearch>
+                <nz-option-group nzLabel="Chủng loại">
+                    <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+                    <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+                </nz-option-group>
+            </nz-select>
+            <input nz-input *ngIf="item.type == 1" placeholder="{{item.tenOptionDauRa}}" style="width: 240px; text-align: center;" [(ngModel)]="value" />
+        </div>
     </div>
 </div>

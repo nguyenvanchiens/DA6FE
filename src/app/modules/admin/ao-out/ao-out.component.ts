@@ -52,9 +52,6 @@ export class AoOutComponent implements OnInit {
         if(this.loaidaura != undefined){
           this.loaidauraId = this.loaidaura.defaultSelectedLoaiDauRa;
         }
-        else{
-          this.loaidauraId = this.optionId;
-        }
         break;
       }
       case 2: {
@@ -78,5 +75,5 @@ export class AoOutComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
 }

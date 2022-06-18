@@ -2,8 +2,10 @@ export interface DauVao{
     id: number,
     tenOptionDauRa: string,
     type: number,
+    input: Input,
 }
 
-export interface Request {
-    
+export interface Input {
+    id: number;
+    value: string;
 }

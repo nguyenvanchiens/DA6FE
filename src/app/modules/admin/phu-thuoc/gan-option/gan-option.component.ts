@@ -7,7 +7,7 @@ import { OptionService } from './gan-option.service';
   styleUrls: ['./gan-option.component.css']
 })
 export class GanOptionComponent implements OnInit {
-  @Input() dauraId: string;
+  @Input() loaidauraId: string;
   listOfData: Options[] = [];
   listResult: any[] = [];
   constructor(

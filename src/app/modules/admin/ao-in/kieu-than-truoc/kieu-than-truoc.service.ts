@@ -8,11 +8,10 @@ import { environment } from "src/environments/environment";
 })
 
 export class KieuThanTruocService {
-    
     constructor(private api: ApiService){}
 
     url = {
-        list: "Type",
+        list: "Type/GetKieuThanTruoc",
     }
 
     list():Observable<any>{

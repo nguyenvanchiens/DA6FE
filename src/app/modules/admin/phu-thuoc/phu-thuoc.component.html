@@ -9,7 +9,7 @@
     <app-san-pham *ngIf="index == 1" ></app-san-pham>
     <app-loai-dau-ra *ngIf="index == 2" [sanphamId]="sanphamId"></app-loai-dau-ra>
     <app-dau-ra *ngIf="index == 3" [loaidauraId]="loaidauraId"></app-dau-ra>
-    <app-gan-option *ngIf="index == 4" [dauraId]="dauraId"></app-gan-option>
+    <app-gan-option *ngIf="index == 4" [loaidauraId]="loaidauraId"></app-gan-option>
 </div>
 <div class="steps-action">
     <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">

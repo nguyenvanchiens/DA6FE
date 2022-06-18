@@ -82,21 +82,12 @@ export class PhuThuocComponent implements OnInit {
         if(this.sanpham != undefined){
           this.sanphamId = this.sanpham?.defaultSelectedSanPham;
         }
-        else{
-          this.sanphamId = "1";
-        }
         break;
       }
       case 2: {
         this.index = 3;
         if(this.loaidaura != undefined){
           this.loaidauraId = this.loaidaura?.defaultSelectedLoaiDauRa;
-        }
-        else if (this.dauraId) {
-          this.loaidauraId = this.dauraId;
-        }
-        else{
-          this.loaidauraId = "0";
         }
         break;
       }

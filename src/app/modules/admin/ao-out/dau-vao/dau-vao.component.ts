@@ -11,6 +11,7 @@ export class DauVaoComponent implements OnInit {
   @Input() dauraId: string;
   @Input() loaidauraId: string;
   listOfData: DauVao[] = [];
+  valueOfInput: any;
   value = '';
   selectedValue = '';
   constructor(
@@ -25,6 +26,11 @@ export class DauVaoComponent implements OnInit {
     this.dauvaoApi.list(+this.dauraId,+this.loaidauraId).subscribe((data)=>{
       if (data){
         this.listOfData = data;
+        this.listOfData.forEach((e)=>{
+          if(e.type == 0){
+            this.dauvaoApi.input(e.tenOptionDauRa).subscribe(res=>e.type = res)
+          }
+        })
       }
     })
   }

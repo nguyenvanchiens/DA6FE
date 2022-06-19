@@ -43,8 +43,8 @@ export class ApiService {
         )
     }
 
-    delete(url: string, id: number): Observable<any> {
-        return this.http.get<any>(url + "/" + id).pipe(
+    delete(url: string): Observable<any> {
+        return this.http.delete<any>(url).pipe(
             map((data: any) => {
                 if (data != null) {
                     return data;

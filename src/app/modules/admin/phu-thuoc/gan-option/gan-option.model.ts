@@ -1,13 +1,10 @@
 export interface Options {
     value: string;
     label: string;
+    checked: boolean;
 }
 
-export class Options {
-    value: string;
-    label: string;
-    constructor(v:string, l:string){
-        this.value = v;
-        this.label = l;
-    }
+export interface OptionPhuThuoc {
+    id:number;
+    tenOptionDauRa: string;
 }

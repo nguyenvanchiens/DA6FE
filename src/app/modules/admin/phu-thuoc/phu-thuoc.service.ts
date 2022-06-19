@@ -14,9 +14,14 @@ export class PhuThuocService {
 
     url = {
         insert: "PhuThuoc/create-phu-thuoc",
+        delete: "PhuThuoc/delete-phu-thuoc"
     }
 
-    Create(model: PhuThuoc):Observable<any>{
+    Create(model: PhuThuoc[]):Observable<any>{
         return this.api.insert(`${environment.apiUrl}${this.url.insert}`,model);
+    }
+
+    Delete(dauraId:number, loaidauraId:number):Observable<any>{
+        return this.api.delete(`${environment.apiUrl}${this.url.delete}`+"?dauraId="+dauraId+"&loaidauraId="+loaidauraId+"&sanphamId=1")
     }
 }

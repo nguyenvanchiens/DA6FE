@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Options } from './gan-option.model';
+import { PhuThuoc } from '../phu-thuoc.model';
+import { OptionPhuThuoc, Options } from './gan-option.model';
 import { OptionService } from './gan-option.service';
 @Component({
   selector: 'app-gan-option',
@@ -8,6 +9,7 @@ import { OptionService } from './gan-option.service';
 })
 export class GanOptionComponent implements OnInit {
   @Input() loaidauraId: string;
+  @Input() dauraId: string;
   listOfData: Options[] = [];
   listResult: any[] = [];
   constructor(
@@ -19,12 +21,10 @@ export class GanOptionComponent implements OnInit {
   }
 
   getList() {
-    this.optionApi.list().subscribe((res: any) => {
+    this.optionApi.list(+this.dauraId,+this.loaidauraId).subscribe((res) => {
       if (res) {
-        res.forEach(element => {
-          let option = new Options(element.value, element.lable)
-          this.listOfData.push(option)
-        });
+        this.listOfData = res
+        console.log(this.listOfData)
       }
     })
   }

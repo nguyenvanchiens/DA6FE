@@ -56,19 +56,11 @@ export class PhuThuocComponent implements OnInit {
       let item = new PhuThuoc(e,+this.dauraId, +this.loaidauraId, +this.sanphamId)
       req.push(item)
     })
-    var count = 0;
-    req.forEach(e=>{
-      this.phuthuocApi.Create(e).subscribe(
-      (res:any)=>{
-        if (res){
-          count++;
-        }
-      },(err)=>{
-        this.notifi.error("LỖI","Không thể kết nối đến Server!")
-      })
+    this.phuthuocApi.Create(req).subscribe((res)=>{
+      if (res){
+        this.notifi.success("THÔNG BÁO","Gắn phụ thuộc thành công!")
+      }
     })
-    var message = "Gắn "+ count + " phụ thuộc thành công!";
-    this.notifi.success("THÔNG BÁO",message)
   }
 
   changeContent(){

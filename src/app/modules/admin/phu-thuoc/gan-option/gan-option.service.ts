@@ -15,7 +15,7 @@ export class OptionService {
         list: "OptionDauRa/get-all-option-dau-ra",
     }
 
-    list():Observable<any>{
-        return this.api.list(`${environment.apiUrl}${this.url.list}`);
+    list(dauraId:number, loaidauraId:number):Observable<any>{
+        return this.api.list(`${environment.apiUrl}${this.url.list}`+"?MaDauRa="+dauraId+"&MaLoaiDauRa="+loaidauraId+"&MaSanPham=1");
     }
 }

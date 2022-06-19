@@ -47,12 +47,7 @@ export class AoOutComponent implements OnInit {
 
   async done() {
     let version = await this.generateFineName(this.fileStorage.name)
-    const fileToBlob = new Blob([new Uint8Array(await this.fileStorage.arrayBuffer())], {type: this.fileStorage.type });
-    const new_file = new File([fileToBlob], version, {
-      type: fileToBlob.type,
-    });
-    
-    this.notifi.success("THÔNG BÁO","Đã thêm mẫu tài liệu mới vào kho dữ liệu!")
+    this.ketqua.save(version);
   }
 
   changeContent(): void {

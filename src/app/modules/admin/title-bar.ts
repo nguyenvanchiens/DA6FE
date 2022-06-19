@@ -121,7 +121,7 @@ export class TitleBar {
     // Updates document title.
     public updateDocumentTitle = (): void => {
         if (this.documentEditor.documentName === '') {
-            this.documentEditor.documentName = '';
+            this.documentEditor.documentName = 'Untitled';
         }
         this.documentTitle.textContent = this.documentEditor.documentName;
     }

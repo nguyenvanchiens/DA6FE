@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 import { DocumentEditorContainerComponent, ToolbarService } from '@syncfusion/ej2-angular-documenteditor';
 import { TitleBar } from '../../title-bar';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-ket-qua',
@@ -15,6 +16,7 @@ export class KetQuaComponent implements OnInit {
   titleBar: TitleBar;
   serviceLink: string = "";
   constructor(
+    private notifi: NzNotificationService,
     private http : HttpClient
   ) {
     this.serviceLink = 'https://ej2services.syncfusion.com/production/web-services/api/documenteditor/';
@@ -23,13 +25,13 @@ export class KetQuaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  showTaiLieu(file: any){
+  async showTaiLieu(file: any){
     const formData = new FormData();
     formData.append('file', file, file.name);
-    this.http.post(this.serviceLink+"Import", formData).subscribe((data:any) => {
-      this.container.documentEditor.open(JSON.stringify(data));
-    })
+    const content = await this.http.post(this.serviceLink+"Import", formData).toPromise();
+    this.container.documentEditor.open(JSON.stringify(content));
   }
+
   onCreate() {
     let titleBarElement: HTMLElement = document.getElementById('default_title_bar');
     this.titleBar = new TitleBar(titleBarElement, this.container.documentEditor, true);
@@ -42,5 +44,20 @@ export class KetQuaComponent implements OnInit {
         this.titleBar.updateDocumentTitle();
     }
     this.container.documentEditor.focusIn();
+  }
+  
+  async save(fileName: string){
+    const fileBlob = await this.container.documentEditor.saveAsBlob("Docx");
+    const new_file = new File([fileBlob], fileName, {
+      type: fileBlob.type,
+    });
+    const formData = new FormData();
+    formData.append('file',new_file,new_file.name)
+    this.http.post("https://localhost:7284/api/File/importfile", formData).subscribe((res:any)=>{
+      if (res != null){
+        let message = "Đã thêm mẫu tài liệu "+res.tenFile+" vào kho dữ liệu!"
+        this.notifi.success("THÔNG BÁO",message)
+      }
+    })
   }
 }

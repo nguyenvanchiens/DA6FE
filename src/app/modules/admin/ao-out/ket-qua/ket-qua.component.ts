@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { DocumentEditorContainerComponent, ToolbarService } from '@syncfusion/ej2-angular-documenteditor';
 import { TitleBar } from '../../title-bar';
+import { isNullOrUndefined } from '@syncfusion/ej2-base';
 
 @Component({
   selector: 'app-ket-qua',
@@ -29,5 +30,17 @@ export class KetQuaComponent implements OnInit {
       this.container.documentEditor.open(JSON.stringify(data));
     })
   }
+  onCreate() {
+    let titleBarElement: HTMLElement = document.getElementById('default_title_bar');
+    this.titleBar = new TitleBar(titleBarElement, this.container.documentEditor, true);
+    this.container.documentEditor.documentName = 'TÀI LIỆU KỸ THUẬT';
+    this.titleBar.updateDocumentTitle();
+  }
 
+  onDocumentChange() {
+    if (!isNullOrUndefined(this.titleBar)) {
+        this.titleBar.updateDocumentTitle();
+    }
+    this.container.documentEditor.focusIn();
+  }
 }

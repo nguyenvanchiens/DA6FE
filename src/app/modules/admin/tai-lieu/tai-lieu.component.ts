@@ -87,7 +87,7 @@ export class TaiLieuComponent implements OnInit {
         const file = new File([data], tenfile, {
           type: data.type,
         });
-        this.chitiet.showTaiLieu(file)
+        this.chitiet.showTaiLieu(file);
       }
     })
   }

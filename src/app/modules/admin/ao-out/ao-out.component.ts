@@ -51,7 +51,7 @@ export class AoOutComponent implements OnInit {
     const new_file = new File([fileToBlob], version, {
       type: fileToBlob.type,
     });
-    console.log(new_file)
+    
     this.notifi.success("THÔNG BÁO","Đã thêm mẫu tài liệu mới vào kho dữ liệu!")
   }
 

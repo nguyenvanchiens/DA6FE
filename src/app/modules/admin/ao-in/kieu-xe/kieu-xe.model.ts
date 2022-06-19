@@ -1,7 +1,7 @@
 export interface KieuXe {
-    maKieuXe: number;
-    tenKieuXe: string;
+    label: string,
+    value: string,
+    groupLabel: string,
     createdDate: string;
-    modifiedDate: string;
     disabled?: boolean;
 }

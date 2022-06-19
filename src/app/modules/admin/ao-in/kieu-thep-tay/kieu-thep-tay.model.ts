@@ -1,7 +1,7 @@
 export interface KieuThepTay {
-    maKieuCuaTay: number;
-    tenKieuCuaTay: string;
+    label: string,
+    value: string,
+    groupLabel: string,
     createdDate: string;
-    modifiedDate: string;
     disabled?: boolean;
 }

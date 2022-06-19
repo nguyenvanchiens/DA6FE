@@ -24,7 +24,6 @@ export class GanOptionComponent implements OnInit {
     this.optionApi.list(+this.dauraId,+this.loaidauraId).subscribe((res) => {
       if (res) {
         this.listOfData = res
-        console.log(this.listOfData)
       }
     })
   }

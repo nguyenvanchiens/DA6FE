@@ -23,7 +23,6 @@ export class LoginService {
                     return data;
                 }
                 else {
-                    console.log("has error!");
                 }
             })
         );

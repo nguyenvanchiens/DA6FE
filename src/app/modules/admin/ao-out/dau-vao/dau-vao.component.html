@@ -1,18 +1,17 @@
 <div style="padding-bottom: 20px; padding-top: 12px;">
-    <p style="font-size: 20px; padding-bottom: 15px; font-weight: 600;">Vui lòng lựa chọn <u>thông tin</u> bạn mong muốn!</p>
+    <p style="font-size: 20px; padding-bottom: 15px; font-weight: 600;">Vui lòng lựa chọn <u>thông tin</u> bạn mong
+        muốn!</p>
     <small>(Bằng cách chọn các lựa chọn bên dưới)</small>
 </div>
 <div class="tab-content" style="padding-left: 0px">
     <div nz-row [nzGutter]="[16, 24]">
         <div nz-col class="gutter-row" [nzSpan]="6" *ngFor="let item of listOfData">
             <span style="font-size: 14px; font-weight: 600;">{{item.tenOptionDauRa}}:</span>
-            <nz-select *ngIf="item.type == 0" [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="Chọn {{item.tenOptionDauRa}}"
-                nzShowSearch>
-                <nz-option-group nzLabel="Danh sách lựa chọn">
-                    <nz-option *ngFor="" nzValue="" nzLabel=""></nz-option>
-                </nz-option-group>
+            <nz-select *ngIf="item.type == 0" [(ngModel)]="item.selectValue" nzAllowClear
+                nzPlaceHolder="Chọn {{item.tenOptionDauRa}}" nzShowSearch [nzOptions]="item.input">
             </nz-select>
-            <input nz-input *ngIf="item.type == 1" placeholder="{{item.tenOptionDauRa}}" style="width: 240px; text-align: center;" [(ngModel)]="value" />
+            <input nz-input *ngIf="item.type == 1" placeholder="{{item.tenOptionDauRa}}"
+                style="width: 240px; text-align: center;" [(ngModel)]="item.selectValue" />
         </div>
     </div>
 </div>

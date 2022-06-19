@@ -10,16 +10,14 @@
             <th>Số thứ tự</th>
             <th>Tên kiểu nẹp</th>
             <th>Ngày tạo</th>
-            <th>Ngày cập nhật</th>
             <th>Thao tác</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let data of rowSelectionTable.data">
-            <td>{{ data.maKieuNep }}</td>
-            <td>{{ data.tenKieuNep }}</td>
+            <td>{{ data.value }}</td>
+            <td>{{ data.label }}</td>
             <td>{{ data.createdDate }}</td>
-            <td>{{ data.modifiedDate }}</td>
             <td><button><i nz-icon nzType="edit" nzTheme="outline"></i></button> | <button><i nz-icon nzType="delete" nzTheme="outline"></i></button></td>
         </tr>
     </tbody>

@@ -20,9 +20,7 @@ export class LoginComponent implements OnInit {
 
   submitForm(): void {
     if(this.validateForm.invalid){
-      console.log("Vui lòng nhập tài khoản và mật khẩu","");     
     }
-    console.log(this.validateForm.value)
     this.api.login(this.validateForm.value).subscribe(
       (response: any)=>{
         if(response.token){

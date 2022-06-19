@@ -1,7 +1,7 @@
 export interface KieuNep {
-    maKieuNep: number;
-    tenKieuNep: string;
+    label: string,
+    value: string,
+    groupLabel: string,
     createdDate: string;
-    modifiedDate: string;
     disabled?: boolean;
 }

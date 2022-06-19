@@ -44,7 +44,6 @@ export class TaiLieuComponent implements OnInit {
     this.filter.keyword = this.keyword;
     this.tailieuApi.list(this.filter).subscribe((res:any)=>{
       if(res){
-        console.log(res)
         this.listOfData = res.items;
       }
     })
@@ -52,7 +51,6 @@ export class TaiLieuComponent implements OnInit {
 
   handleChange(info: NzUploadChangeParam): void {
     if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
     }
     if (info.file.status === 'done') {
       this.msg.success(`${info.file.name} Tải lên tài liệu thành công.`);

@@ -1,11 +1,14 @@
 export interface DauVao{
-    id: number,
-    tenOptionDauRa: string,
-    type: number,
-    input: Input,
+    id: number;
+    tenOptionDauRa: string;
+    type: number;
+    input: InputOption[];
+    selectValue: string;
 }
 
-export interface Input {
-    id: number;
-    value: string;
+export interface InputOption {
+    label: string,
+    value: string,
+    groupLabel: string,
+    createdDate: string;
 }

@@ -1,7 +1,7 @@
 export interface ThanhPhanVai {
-    maThanhPhanVai: number;
-    tenThanhPhanVai: string;
+    label: string,
+    value: string,
+    groupLabel: string,
     createdDate: string;
-    modifiedDate: string;
     disabled?: boolean;
 }

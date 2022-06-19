@@ -38,7 +38,6 @@ export class AoOutComponent implements OnInit {
   }
 
   done(): void {
-    console.log('done');
   }
 
   changeContent(): void {

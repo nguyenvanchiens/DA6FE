@@ -4,5 +4,6 @@
             Quay lại
         </button>
     </div>
-    <ejs-documenteditorcontainer #documenteditor_ref [serviceUrl]='serviceLink' [enableSpellCheck]=true style="display:block" height="600" [enableToolbar]=true></ejs-documenteditorcontainer>
+    <div id="default_title_bar" class="e-de-ctn-title"></div>
+    <ejs-documenteditorcontainer #documenteditor_ref [serviceUrl]='serviceLink' [enableSpellCheck]=true (created)="onCreate()" (documentChange)="onDocumentChange()" style="display:block" height="600"></ejs-documenteditorcontainer>
 </div>

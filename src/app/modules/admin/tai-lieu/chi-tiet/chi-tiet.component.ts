@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ToolbarService, DocumentEditorContainerComponent } from '@syncfusion/ej2-angular-documenteditor';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
 import { TitleBar } from '../../title-bar';
@@ -39,5 +39,19 @@ export class ChiTietComponent implements OnInit {
     this.http.post(this.serviceLink+"Import", formData).subscribe((data:any) => {
       this.container.documentEditor.open(JSON.stringify(data));
     })
+  }
+  
+  onCreate() {
+    let titleBarElement: HTMLElement = document.getElementById('default_title_bar');
+    this.titleBar = new TitleBar(titleBarElement, this.container.documentEditor, true);
+    this.container.documentEditor.documentName = 'TÀI LIỆU KỸ THUẬT';
+    this.titleBar.updateDocumentTitle();
+  }
+
+  onDocumentChange() {
+    if (!isNullOrUndefined(this.titleBar)) {
+        this.titleBar.updateDocumentTitle();
+    }
+    this.container.documentEditor.focusIn();
   }
 }

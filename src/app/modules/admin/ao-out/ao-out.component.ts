@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { FilterModel } from 'src/app/core/models/filter.model';
+import { TaiLieu } from '../tai-lieu/tai-lieu.model';
 import { AoOutService } from './ao-out.service';
 import { DauRaComponent } from './dau-ra/dau-ra.component';
 import { DauVaoComponent } from './dau-vao/dau-vao.component';
@@ -16,7 +18,8 @@ export class AoOutComponent implements OnInit {
   @ViewChild(DauRaComponent) daura: DauRaComponent;
   @ViewChild(DauVaoComponent) option: DauVaoComponent;
   @ViewChild(KetQuaComponent) ketqua: KetQuaComponent
-
+  filter = new FilterModel();
+  listOfData: readonly TaiLieu[] = [];
   sanphamId = "1";
   loaidauraId = "";
   dauraId = "";
@@ -42,9 +45,13 @@ export class AoOutComponent implements OnInit {
     this.changeContent();
   }
 
-  done(): void {
-    let version = this.fileStorage.name.replace(/[^a-zA-Z]/g, '');
-    console.log(version);
+  async done() {
+    let version = await this.generateFineName(this.fileStorage.name)
+    const fileToBlob = new Blob([new Uint8Array(await this.fileStorage.arrayBuffer())], {type: this.fileStorage.type });
+    const new_file = new File([fileToBlob], version, {
+      type: fileToBlob.type,
+    });
+    console.log(new_file)
     this.notifi.success("THÔNG BÁO","Đã thêm mẫu tài liệu mới vào kho dữ liệu!")
   }
 
@@ -128,5 +135,20 @@ export class AoOutComponent implements OnInit {
       str = str.replace(re, char);
     }
     return str;
+  }
+
+  async generateFineName(filename: string){
+    let name = filename.replace(/[.doc 0-9]/g,'')
+    this.filter.keyword = name;
+    let files = await this.aoApi.list(this.filter).toPromise();
+    this.listOfData = files.items
+    let max_version = this.listOfData.reduce(function(accumulator, element){
+      let prev = accumulator.tenFile.replace(/[^0-9]/g, '');
+      let next = element.tenFile.replace(/[^0-9]/g, '');
+      return (prev > next) ? accumulator : element
+    });
+    let v = max_version.tenFile.replace(/[^0-9]/g, '')
+    let vs = (+v)+1
+    return name+vs+".doc";
   }
 }

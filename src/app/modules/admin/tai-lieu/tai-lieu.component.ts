@@ -59,7 +59,6 @@ export class TaiLieuComponent implements OnInit {
       this.msg.error(`${info.file.name} Tải lên tài liệu thất bại.`);
     }
   }
-
   onCurrentPageDataChange(listOfCurrentPageData: readonly TaiLieu[]): void {
     this.listOfCurrentPageData = listOfCurrentPageData;
   }

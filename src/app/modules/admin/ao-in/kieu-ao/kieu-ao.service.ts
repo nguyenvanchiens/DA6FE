@@ -12,7 +12,7 @@ export class KieuAoService {
     constructor(private api: ApiService){}
 
     url = {
-        list: "",
+        list: "Type/GetAllChungloai",
     }
 
     list():Observable<any>{

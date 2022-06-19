@@ -1,1 +1,24 @@
-<p>kieu-ao works!</p>
+<div class="send-request">
+    <button nz-button nzType="danger">
+        Thêm mới
+    </button>
+</div>
+<nz-table #rowSelectionTable nzShowPagination nzShowSizeChanger [nzData]="listOfData"
+    (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
+    <thead>
+        <tr>
+            <th>Số thứ tự</th>
+            <th>Tên kiểu áo</th>
+            <th>Ngày tạo</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+            <td>{{ data.value }}</td>
+            <td>{{ data.label }}</td>
+            <td>{{ data.createdDate }}</td>
+            <td><button><i nz-icon nzType="edit" nzTheme="outline"></i></button> | <button><i nz-icon nzType="delete" nzTheme="outline"></i></button></td>
+        </tr>
+    </tbody>
+</nz-table>

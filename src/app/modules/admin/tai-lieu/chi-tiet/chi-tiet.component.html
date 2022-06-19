@@ -6,4 +6,9 @@
     </div>
     <div id="default_title_bar" class="e-de-ctn-title"></div>
     <ejs-documenteditorcontainer #documenteditor_ref [serviceUrl]='serviceLink' [enableSpellCheck]=true (created)="onCreate()" (documentChange)="onDocumentChange()" style="display:block" height="600"></ejs-documenteditorcontainer>
+    <div class="send-request" style="margin-top: 12px;">
+        <button nz-button (click)="save()" nzType="primary" [nzLoading]="isLoading">
+            Lưu thay đổi vào hệ thống
+        </button>
+    </div>
 </div>

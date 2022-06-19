@@ -4,17 +4,16 @@ import { ApiService } from "src/app/core/services/api.service";
 import { environment } from "src/environments/environment";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: "root",
 })
-
 export class KieuThanTruocService {
-    constructor(private api: ApiService){}
+  constructor(private api: ApiService) {}
 
-    url = {
-        list: "Type/GetKieuThanTruoc",
-    }
+  url = {
+    list: "Type/GetAllKieuthantruoc",
+  };
 
-    list():Observable<any>{
-        return this.api.list(`${environment.apiUrl}${this.url.list}`);
-    }
+  list(): Observable<any> {
+    return this.api.list(`${environment.apiUrl}${this.url.list}`);
+  }
 }

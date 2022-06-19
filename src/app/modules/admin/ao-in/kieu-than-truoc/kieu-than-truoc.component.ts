@@ -33,6 +33,5 @@ export class KieuThanTruocComponent implements OnInit {
 
   onCurrentPageDataChange(listOfCurrentPageData: readonly KieuThanTruoc[]): void {
     this.listOfCurrentPageData = listOfCurrentPageData;
-    
   }
 }

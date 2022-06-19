@@ -12,7 +12,7 @@ export class ThanhPhanVaiService {
     constructor(private api: ApiService){}
 
     url = {
-        list: "Type/GetAllThanhPhanVai",
+        list: "Type/GetAllThanhPhanVai1",
     }
 
     list():Observable<any>{
